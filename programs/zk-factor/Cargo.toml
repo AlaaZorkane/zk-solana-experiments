@@ -1,0 +1,29 @@
+[package]
+name = "zk-factor"
+version = "0.1.0"
+authors = ["Alaa Zorkane <alaazorkane@gmail.com>"]
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "zk_factor"
+
+[features]
+default = []
+cpi = ["no-entrypoint"]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
+
+[dependencies]
+anchor-lang = { git = "https://github.com/coral-xyz/anchor.git", features = [
+  "init-if-needed",
+] }
+anchor-spl = { git = "https://github.com/coral-xyz/anchor.git" }
+ark-bn254 = "0.5.0"
+ark-ff = "0.5.0"
+ark-serialize = "0.5.0"
+num-bigint = "0.4.6"
+solana-bn254 = "2.1.13"
+thiserror = "2.0.11"
