@@ -1,7 +1,18 @@
 use anchor_lang::prelude::*;
 
-pub fn _initialize(_ctx: &mut Context<InitializeAccounts>) -> Result<()> {
-    msg!("Initializing zk factor");
+use crate::{Groth16Verifier, FACTOR_VK, PUBLIC_INPUT};
+
+pub fn _initialize(_ctx: &mut Context<InitializeAccounts>, input: InitializeInput) -> Result<()> {
+    let mut verifier = Groth16Verifier::<'_, 1>::new(
+        &input.proof_a,
+        &input.proof_b,
+        &input.proof_c,
+        &PUBLIC_INPUT,
+        &FACTOR_VK,
+    )?;
+
+    verifier.prepare_inputs::<true>()?;
+    verifier.verify()?;
     Ok(())
 }
 
@@ -12,4 +23,11 @@ pub struct InitializeAccounts<'info> {
 
     // Program accounts
     pub system_program: Program<'info, System>,
+}
+
+#[derive(AnchorSerialize, AnchorDeserialize)]
+pub struct InitializeInput {
+    pub proof_a: [u8; 64],
+    pub proof_b: [u8; 128],
+    pub proof_c: [u8; 64],
 }

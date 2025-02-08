@@ -1,25 +1,25 @@
-use thiserror::Error;
+use anchor_lang::prelude::*;
 
-#[derive(Debug, Error, Clone, PartialEq, Eq)]
+#[error_code]
 pub enum Groth16Error {
-    #[error("Incompatible Verifying Key with number of public inputs")]
+    #[msg("Incompatible Verifying Key with number of public inputs")]
     IncompatibleVerifyingKeyWithNrPublicInputs,
-    #[error("ProofVerificationFailed")]
+    #[msg("ProofVerificationFailed")]
     ProofVerificationFailed,
-    #[error("PreparingInputsG1AdditionFailed")]
+    #[msg("PreparingInputsG1AdditionFailed")]
     PreparingInputsG1AdditionFailed,
-    #[error("PreparingInputsG1MulFailed")]
+    #[msg("PreparingInputsG1MulFailed")]
     PreparingInputsG1MulFailed,
-    #[error("InvalidG1Length")]
+    #[msg("InvalidG1Length")]
     InvalidG1Length,
-    #[error("InvalidG2Length")]
+    #[msg("InvalidG2Length")]
     InvalidG2Length,
-    #[error("InvalidPublicInputsLength")]
+    #[msg("InvalidPublicInputsLength")]
     InvalidPublicInputsLength,
-    #[error("DecompressingG1Failed")]
+    #[msg("DecompressingG1Failed")]
     DecompressingG1Failed,
-    #[error("DecompressingG2Failed")]
+    #[msg("DecompressingG2Failed")]
     DecompressingG2Failed,
-    #[error("PublicInputGreaterThenFieldSize")]
+    #[msg("PublicInputGreaterThenFieldSize")]
     PublicInputGreaterThenFieldSize,
 }
