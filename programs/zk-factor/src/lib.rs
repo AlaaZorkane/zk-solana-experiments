@@ -17,7 +17,7 @@ pub use instructions::*;
 pub use state::*;
 pub use zk::*;
 
-declare_id!("escSmDEY26evSYow7Nio1WtkNFneo95DTq83P4myqer");
+declare_id!("zk1PtMyK25jdTA56c7duVC7Zk2gPKy2Y3PiYhJ4L7ro");
 
 #[program]
 pub mod zk_factor {

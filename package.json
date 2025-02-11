@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "vk": "bun run vk_to_rs.ts"
+    "vk": "bun run vk_to_rs.ts",
+    "generate": "bun run generate-clients.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"
@@ -13,6 +14,17 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "ffjavascript": "^0.3.1"
+    "zk-utils": "file:./wasm/pkg",
+    "@biomejs/biome": "^1.9.4",
+    "@codama/nodes-from-anchor": "^1.1.4",
+    "@codama/renderers-js": "^1.2.3",
+    "@solana/web3.js": "^2",
+    "@types/snarkjs": "^0.7.9",
+    "circomkit": "^0.3.2",
+    "codama": "^1.2.4",
+    "ffjavascript": "^0.3.1",
+    "pino": "^9.6.0",
+    "pino-pretty": "^13.0.0",
+    "snarkjs": "^0.7.5"
   }
 }

@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-use crate::{Groth16Verifier, FACTOR_VK, PUBLIC_INPUT};
+use crate::{Groth16Verifier, PUBLIC_INPUT, VERIFYINGKEY};
 
 pub fn _initialize(_ctx: &mut Context<InitializeAccounts>, input: InitializeInput) -> Result<()> {
     let mut verifier = Groth16Verifier::<'_, 1>::new(
@@ -8,7 +8,7 @@ pub fn _initialize(_ctx: &mut Context<InitializeAccounts>, input: InitializeInpu
         &input.proof_b,
         &input.proof_c,
         &PUBLIC_INPUT,
-        &FACTOR_VK,
+        &VERIFYINGKEY,
     )?;
 
     verifier.prepare_inputs::<true>()?;
